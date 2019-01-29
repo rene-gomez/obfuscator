@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 1.4
+# version 1.5
 if [ $# -eq 0 ]
         then
         echo "No arguments supplied, please supplied the directory"
@@ -23,7 +23,7 @@ FileRenamed="${file%.log}_obfuscated.log"
                 if [[  "$FileRenamed" ==  *`date +'%Y-%m-%d'`*.log ]] ; then
                         ds=`date '+%d/%m/%Y %H:%M:%S'`
                         echo -e "\n Start obfuscation process in file: $FileRenamed at $ds"
-                        perl -p -i -e 's/((?<=plainPassword:\s)|(?<=Authorization=B)|(?<=Authorization Bearer\s)|(?<=Authorization Basic\s)|(?<=encrypted Pass:\s)|(?<=password=)|(?<=client_id=)|(?<=Bearer Exitosamente:\s)|(?<="access_token":")|(?<="password":"))\w+[A-Za-z0-9\-\_\s]+/*****/g' $file
+                        perl -p -i -e 's/((?<=plainPassword:\s)|(?<=Authorization=B)|(?<=Authorization Bearer\s)|(?<=Authorization Basic\s)|(?<=encrypted Pass:\s)|(?<=password=)|(?<=client_id=)|(?<=Bearer Exitosamente:\s)|(?<="access_token":")|(?<="password":"))\w+[A-Za-z0-9\-\_\s]+/*****/g' $FileRenamed
                         de=`date '+%d/%m/%Y %H:%M:%S'`
                         echo -e "\n Done obfuscation in file: $FileRenamed at $de"
                 fi
